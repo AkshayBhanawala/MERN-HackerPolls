@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata:200,300,400,500,600,700,800,900|Poppins:100,200,300,400,500,600,700,800,900&display=swap');
+
+/*=====================================================
+ * For theme colors look in to themes directory.
+ * Without theme colors it will not look good.
+ * There are no fall back colors.
+ *=====================================================
+*/
+
+/* General Variables*/
+:root {
+	--color-accent-1: 162, 155, 254;
+	--color-green: 29, 209, 161;
+	--color-red: 255, 107, 107;
+	--border-radius: 2px;
+	--min-body: 320px;
+	--min-body: 320px;
+}
+
+@media only screen and (min-width: 1px) and (max-width: 480px) {
+  :root {
+		--header-size: 0px;
+	}
+}
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  :root {
+		--header-size: 150px;
+	}
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  :root {
+		--header-size: 200px;
+	}
+}
+@media only screen and (min-width: 1024px)  {
+  :root {
+		--header-size: 300px;
+	}
+}
+
+html,
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	display: block;
+	height: auto;
+	min-width: var(--min-body);
+	margin: 0;
+	padding: 0;
+	overflow-y: auto;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+	font-family: 'Inconsolata', monospace !important;
+	background: rgb(var(--bg-color-2)) !important;
+	background-blend-mode: difference;
+	transition: 0.5s;
+}
+
+body {
+	margin-left: var(--header-size);
+	transition: 0.5s;
+}
+
+body,
+body * {
+	color: rgb(var(--color)) !important;
+	font-weight: 300 !important;
+	box-sizing: border-box;
+	outline: 0 !important;
+	transition: 0.5s;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+	font-family: 'Inconsolata', monospace !important;
+	font-weight: 300 !important;
+}
+
+body * input {
+  outline: none;
+}
+
+body * button,
+body * input[type=button],
+body * input[type=submit],
+body * input[type=reset] {
+	border: none !important;
+	border-radius: var(--border-radius) !important;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	cursor: pointer;
+  outline: none;
+}
+
+#root {
+	display: block;
+	height: 100%;
+}
+
+.MainContainer {
+	padding-top: 50px;
+	height: 100%;
+}
+
+.HackedTitle {
+	overflow: hidden;
+	font-size: 30px;
+	font-weight: 400 !important;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 10px;
+	padding-left: 10px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin-bottom: 10px;
+	background-color: rgba(var(--color), 0.04);
+	transform: rotateY(180deg);
+}

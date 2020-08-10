@@ -1,0 +1,8 @@
+/* Dark Color Theme */
+:root {
+	--bg-color-1: 5, 5, 5;
+	--bg-color-2: 24, 24, 24;
+	--color: 231, 231, 231;
+	--vote-count-color: 85, 239, 196;
+	--shadow-opacity: 1;
+}

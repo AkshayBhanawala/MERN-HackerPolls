@@ -1,0 +1,8 @@
+.btn_ThemeChange {
+	background-color: rgba(var(--color), 0.8);
+	color: rgba(var(--bg-color-1)) !important;
+	font-size: 20px;
+	font-weight: 600 !important;
+	letter-spacing: 3px;
+	padding: 5px 30px;
+}

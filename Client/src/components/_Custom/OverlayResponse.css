@@ -1,0 +1,199 @@
+.OverlayResponse {
+	position: fixed;
+	z-index: 99;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+}
+
+.OverlayResponse .OverlayCard {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 40%;
+	width: 65%;
+	min-width: 200px;
+	min-height: 250px;
+	max-width: 250px;
+	max-height: 350px;
+	border-radius: var(--border-radius);
+	overflow: hidden;
+	box-shadow: 0px 3px 5px -2px rgba(0, 0, 0, var(--shadow-opacity));
+}
+
+.OverlayResponse .OverlayCard > div {
+	display: block;
+	position: relative;
+	text-align: center;
+	width: 100%;
+}
+
+.OverlayResponse .OverlayCard .top {
+	flex-grow: 1;
+	height: 60%;
+}
+
+.OverlayResponse .OverlayCard .top div {
+	display: block;
+	position: relative;
+	margin: auto;
+}
+
+.OverlayResponse .OverlayCard .top > div {
+	height: 100%;
+	padding: 15px;
+}
+
+.OverlayResponse .OverlayCard .top > div > .icon {
+	height: 80%;
+	max-height: 130px;
+}
+
+.OverlayResponse .OverlayCard .top > div > .icon > svg {
+	height: 100%;
+}
+
+.OverlayResponse .OverlayCard .top > div > .text {
+	margin-top: 5px;
+	font-size: 30px;
+	line-height: 30px;
+	font-weight: 600 !important;
+}
+
+.OverlayResponse .OverlayCard .details {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 15px;
+	line-height: 20px;
+}
+
+.OverlayResponse .OverlayCard .details > div {
+	width: 100%;
+}
+
+.OverlayResponse .OverlayCard .details > div span {
+	display: inline-block;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.OverlayResponse .OverlayCard .details > div span:nth-child(1) {
+	text-align: right;
+	opacity: 0.8;
+}
+
+.OverlayResponse .OverlayCard .closeBtn {
+	height: 20%;
+	min-height: 40px;
+	max-height: 55px;
+}
+
+.OverlayResponse .OverlayCard .closeBtn button {
+	display: block;
+	width: 100%;
+	height: 100%;
+	line-height: 30px;
+	font-size: 30px;
+	font-weight: 600 !important;
+	transition: 0.2s ease-out;
+}
+
+.OverlayResponse .OverlayCard .closeBtn button:hover {
+	transition: 0.2s ease-in;
+}
+
+.OverlayResponse .OverlayCard .closeBtn button:active {
+	transition: 0.1s ease-in;
+}
+
+.OverlayResponse .OverlayCard .closeBtn button:disabled {
+	color: rgba(var(--color), 0.3) !important;
+	background-color: rgba(var(--color), 0.1);
+	cursor: default;
+	user-select: none;
+}
+
+
+/*
+* ==================================================
+* Colors
+* ==================================================
+*/
+.OverlayResponse.success,
+.OverlayResponse.error {
+	background-color: rgba(var(--bg-color-1), 0.8);
+}
+
+.OverlayResponse.success .OverlayCard,
+.OverlayResponse.error .OverlayCard {
+	background-color: rgb(223, 230, 233);
+	background-color: rgba(var(--bg-color-2));
+}
+
+.OverlayResponse.success .OverlayCard *,
+.OverlayResponse.error .OverlayCard * {
+	color: rgb(45, 52, 54) !important;
+	color: rgb(var(--color)) !important;
+}
+
+.OverlayResponse.success .OverlayCard .top > div > .icon > svg path {
+	fill: rgb(29, 209, 161);
+	fill: rgb(var(--color-green));
+}
+.OverlayResponse.error .OverlayCard .top > div > .icon > svg path {
+	fill: rgb(255, 107, 107);
+	fill: rgb(var(--color-red));
+}
+
+.OverlayResponse.success .OverlayCard .top > div > .text {
+	color: rgb(29, 209, 161) !important;
+	color: rgb(var(--color-green)) !important;
+}
+.OverlayResponse.error .OverlayCard .top > div > .text {
+	color: rgb(255, 107, 107) !important;
+	color: rgb(var(--color-red)) !important;
+}
+
+.OverlayResponse .OverlayCard .closeBtn button {
+	color: rgba(255, 255, 255, 0.8) !important;
+}
+.OverlayResponse.success .OverlayCard .closeBtn button {
+	background-color: rgba(29, 209, 161, 0.6);
+	background-color: rgba(var(--color-green), 0.6);
+}
+.OverlayResponse.error .OverlayCard .closeBtn button {
+	background-color: rgba(255, 107, 107, 0.6);
+	background-color: rgba(var(--color-red), 0.6);
+}
+
+.OverlayResponse .OverlayCard .closeBtn button:hover {
+	color: rgba(255, 255, 255, 1) !important;
+}
+.OverlayResponse.success .OverlayCard .closeBtn button:hover {
+	background-color: rgba(29, 209, 161, 0.8);
+	background-color: rgba(var(--color-green), 0.8);
+}
+.OverlayResponse.error .OverlayCard .closeBtn button:hover {
+	background-color: rgba(255, 107, 107, 0.8);
+	background-color: rgba(var(--color-red), 0.8);
+}
+
+.OverlayResponse .OverlayCard .closeBtn button:active {
+	color: rgba(45, 52, 54) !important;
+}
+.OverlayResponse.success .OverlayCard .closeBtn button:active {
+	background-color: rgba(29, 209, 161, 1);
+	background-color: rgba(var(--color-green), 1);
+}
+.OverlayResponse.error .OverlayCard .closeBtn button:active {
+	background-color: rgba(255, 107, 107, 1);
+	background-color: rgba(var(--color-red), 1);
+}

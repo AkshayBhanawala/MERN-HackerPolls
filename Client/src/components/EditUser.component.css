@@ -1,0 +1,203 @@
+.formContainer .editUser {
+}
+
+.formContainer .editUser .form-group {
+	background-color: rgba(255, 255, 255, 0.08);
+	padding: 2px;
+}
+
+.formContainer .editUser .expertise_list,
+.formContainer .editUser .expertise_list > .head,
+.formContainer .editUser .expertise_list > .head > * {
+	position: relative;
+	display: block;
+}
+
+.formContainer .editUser .expertise_list > .head {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.formContainer .editUser .expertise_list > .head > .title {
+	font-size: 20px;
+}
+
+.formContainer .editUser .expertise_list > .head > .add_btn {
+	flex-wrap: 0;
+	flex-shrink: 0;
+	position: relative;
+	display: block;
+}
+
+.formContainer .editUser .expertise_list .expertise_item {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 40px;
+	background-color: transparent;
+	margin-bottom: 10px !important;
+}
+
+.formContainer .editUser .expertise_list .expertise_item > input {
+	flex-grow: 0;
+	flex-shrink: 0;
+	display: block;
+	height: 100%;
+}
+
+.formContainer .editUser .expertise_list .expertise_item > input:nth-child(1) {
+	min-width: 100px;
+	flex-grow: 1;
+	flex-shrink: 1;
+	font-size: 16px;
+}
+.formContainer .editUser .expertise_list .expertise_item > input:nth-child(2) {
+	margin-left: 3px;
+	width: 30%;
+	min-width: 100px;
+}
+
+
+/*
+* ====================================================================
+* Custom Buttons
+* ====================================================================
+*/
+
+.formContainer .editUser .expertise_list > .head > .add_btn > button,
+.formContainer .editUser .expertise_list > .head > .add_btn > input[type=button],
+.formContainer .editUser .expertise_list > .head > .add_btn > input[type=submit],
+.formContainer .editUser .expertise_list > .head > .add_btn > input[type=reset],
+.formContainer .editUser .expertise_list .expertise_item > button,
+.formContainer .editUser .expertise_list .expertise_item > input[type=button],
+.formContainer .editUser .expertise_list .expertise_item > input[type=submit],
+.formContainer .editUser .expertise_list .expertise_item > input[type=reset] {
+	flex-grow: 0;
+	flex-shrink: 0;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0;
+	margin: 0;
+	width: 40px;
+	height: 40px;
+	border-radius: 50% !important;
+	border: 1px solid rgba(var(--color), 0.5) !important;
+	background-color: rgba(var(--color), 0.1);
+	transition: 0.2s ease-out;
+}
+
+.formContainer .editUser .expertise_list > .head > .add_btn > button:hover,
+.formContainer .editUser .expertise_list > .head > .add_btn > input[type=button]:hover,
+.formContainer .editUser .expertise_list > .head > .add_btn > input[type=submit]:hover,
+.formContainer .editUser .expertise_list > .head > .add_btn > input[type=reset]:hover,
+.formContainer .editUser .expertise_list > .head > .add_btn > button:focus,
+.formContainer .editUser .expertise_list > .head > .add_btn > input[type=button]:focus,
+.formContainer .editUser .expertise_list > .head > .add_btn > input[type=submit]:focus,
+.formContainer .editUser .expertise_list > .head > .add_btn > input[type=reset]:focus {
+	border: 1px solid rgba(var(--color), 0) !important;
+	background-color: rgba(var(--color-green), 0.8);
+	transition: 0.2s ease-in;
+}
+
+.formContainer .editUser .expertise_list > .head > .add_btn > button:active,
+.formContainer .editUser .expertise_list > .head > .add_btn > input[type=button]:active,
+.formContainer .editUser .expertise_list > .head > .add_btn > input[type=submit]:active,
+.formContainer .editUser .expertise_list > .head > .add_btn > input[type=reset]:active {
+	border: 1px solid rgba(var(--color), 0) !important;
+	background-color: rgba(var(--color-green), 1);
+	transition: 0.1s ease-in;
+}
+
+.formContainer .editUser .expertise_list > .head > .add_btn > button svg,
+.formContainer .editUser .expertise_list > .head > .add_btn > input[type=button] svg,
+.formContainer .editUser .expertise_list > .head > .add_btn > input[type=submit] svg,
+.formContainer .editUser .expertise_list > .head > .add_btn > input[type=reset] svg {
+	height: 50%;
+}
+
+.formContainer .editUser .expertise_list > .head > .add_btn > button svg path,
+.formContainer .editUser .expertise_list > .head > .add_btn > input[type=button] svg path,
+.formContainer .editUser .expertise_list > .head > .add_btn > input[type=submit] svg path,
+.formContainer .editUser .expertise_list > .head > .add_btn > input[type=reset] svg path,
+.formContainer .editUser .expertise_list .expertise_item > button svg path,
+.formContainer .editUser .expertise_list .expertise_item > input[type=button] svg path,
+.formContainer .editUser .expertise_list .expertise_item > input[type=submit] svg path,
+.formContainer .editUser .expertise_list .expertise_item > input[type=reset] svg path {
+	stroke-width: 10px;
+	stroke: rgba(var(--color), 1);
+	fill: rgba(var(--color), 1);
+	transition: 0.1s ease-in;
+}
+
+.formContainer .editUser .expertise_list > .head > .add_btn > button:active svg path,
+.formContainer .editUser .expertise_list > .head > .add_btn > input[type=button]:active svg path,
+.formContainer .editUser .expertise_list > .head > .add_btn > input[type=submit]:active svg path,
+.formContainer .editUser .expertise_list > .head > .add_btn > input[type=reset]:active svg path,
+.formContainer .editUser .expertise_list .expertise_item > button:active svg path,
+.formContainer .editUser .expertise_list .expertise_item > input[type=button]:active svg path,
+.formContainer .editUser .expertise_list .expertise_item > input[type=submit]:active svg path,
+.formContainer .editUser .expertise_list .expertise_item > input[type=reset]:active svg path {
+	stroke: rgba(var(--bg-color-1), 1) !important;
+	fill: rgba(var(--bg-color-1), 1) !important;
+	transition: 0.1s ease-in;
+}
+
+
+
+
+.formContainer .editUser .expertise_list .expertise_item > button,
+.formContainer .editUser .expertise_list .expertise_item > input[type=button],
+.formContainer .editUser .expertise_list .expertise_item > input[type=submit],
+.formContainer .editUser .expertise_list .expertise_item > input[type=reset] {
+	border-radius: 0px !important;
+	border-color: transparent !important;
+}
+
+.formContainer .editUser .expertise_list .expertise_item > button:hover,
+.formContainer .editUser .expertise_list .expertise_item > input[type=button]:hover,
+.formContainer .editUser .expertise_list .expertise_item > input[type=submit]:hover,
+.formContainer .editUser .expertise_list .expertise_item > input[type=reset]:hover,
+.formContainer .editUser .expertise_list .expertise_item > button:focus,
+.formContainer .editUser .expertise_list .expertise_item > input[type=button]:focus,
+.formContainer .editUser .expertise_list .expertise_item > input[type=submit]:focus,
+.formContainer .editUser .expertise_list .expertise_item > input[type=reset]:focus {
+	background-color: rgba(var(--color-red), 0.8);
+	transition: 0.2s ease-in;
+}
+
+.formContainer .editUser .expertise_list .expertise_item > button:active,
+.formContainer .editUser .expertise_list .expertise_item > input[type=button]:active,
+.formContainer .editUser .expertise_list .expertise_item > input[type=submit]:active,
+.formContainer .editUser .expertise_list .expertise_item > input[type=reset]:active {
+	color: rgb(var(--bg-color-1)) !important;
+	background-color: rgba(var(--color-red), 1);
+	transition: 0.1s ease-in;
+}
+
+.formContainer .editUser .expertise_list .expertise_item > button svg,
+.formContainer .editUser .expertise_list .expertise_item > input[type=button] svg,
+.formContainer .editUser .expertise_list .expertise_item > input[type=submit] svg,
+.formContainer .editUser .expertise_list .expertise_item > input[type=reset] svg {
+	height: 55%;
+}
+
+
+
+
+.formContainer .editUser .expertise_list > .head > .add_btn > button:disabled,
+.formContainer .editUser .expertise_list > .head > .add_btn > input[type=button]:disabled,
+.formContainer .editUser .expertise_list > .head > .add_btn > input[type=submit]:disabled,
+.formContainer .editUser .expertise_list > .head > .add_btn > input[type=reset]:disabled,
+.formContainer .editUser .expertise_list .expertise_item > button:disabled,
+.formContainer .editUser .expertise_list .expertise_item > input[type=button]:disabled,
+.formContainer .editUser .expertise_list .expertise_item > input[type=submit]:disabled,
+.formContainer .editUser .expertise_list .expertise_item > input[type=reset]:disabled {
+	pointer-events: none;
+}

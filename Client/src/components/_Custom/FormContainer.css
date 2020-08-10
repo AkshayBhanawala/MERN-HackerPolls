@@ -1,0 +1,146 @@
+.wrapper_custom {
+	position: relative;
+  display: block;
+}
+
+.formContainer {
+	max-width: 500px;
+	margin: auto;
+	padding-top: 30px;
+}
+
+.formContainer > .title {
+	font-size: 30px;
+	font-weight: 400 !important;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin-bottom: 10px;
+	background-color: rgba(var(--color), 0.02);
+	transform: rotateY(180deg);
+}
+
+.formContainer > form
+.formContainer > .form {
+	margin: auto;
+}
+
+.formContainer .form-group {
+	position: relative;
+	margin-bottom: 1.5rem !important;
+}
+
+.formContainer .form-group *:focus {
+	box-shadow: none !important;
+}
+
+.formContainer .form-group label,
+.formContainer .form-group input {
+	display: block;
+}
+
+.formContainer .form-group .tb {
+	background-color: rgba(0, 0, 0, 0.3);
+	border: 1px solid rgba(var(--color-accent-1), 0);
+	border-radius: var(--border-radius);
+	height: 40px;
+	padding-left: 10px;
+	padding-right: 10px;
+	width: 100%;
+	font-size: 20px;
+	transition: 0.2s ease-out;
+}
+
+.formContainer .form-group .tb:focus {
+	border: 1px solid rgba(var(--color-accent-1), 0.5);
+	transition: 0.2s ease-in;
+}
+
+.formContainer .form-group select.tb option {
+	background-color: rgba(var(--bg-color-2)) !important;
+}
+
+.formContainer .buttons {
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+
+.formContainer .buttons button,
+.formContainer .buttons input[type=button],
+.formContainer .buttons input[type=submit],
+.formContainer .buttons input[type=reset] {
+	display: block;
+	width: 100%;
+	height: 40px;
+	font-size: 20px;
+	font-weight: 600 !important;
+	background-color: rgba(var(--color-accent-1), 0.6);
+	transition: 0.2s ease-out;
+}
+
+.formContainer .buttons button:hover,
+.formContainer .buttons input[type=button]:hover,
+.formContainer .buttons input[type=submit]:hover,
+.formContainer .buttons input[type=reset]:hover,
+.formContainer .buttons button:focus,
+.formContainer .buttons input[type=button]:focus,
+.formContainer .buttons input[type=submit]:focus,
+.formContainer .buttons input[type=reset]:focus {
+	background-color: rgba(var(--color-accent-1), 0.8);
+	transition: 0.2s ease-in;
+}
+
+.formContainer .buttons button:active,
+.formContainer .buttons input[type=button]:active,
+.formContainer .buttons input[type=submit]:active,
+.formContainer .buttons input[type=reset]:active {
+	color: rgb(var(--bg-color-1)) !important;
+	background-color: rgba(var(--color-accent-1), 1);
+	transition: 0.1s ease-in;
+}
+
+.formContainer .buttons button:disabled,
+.formContainer .buttons input[type=button]:disabled,
+.formContainer .buttons input[type=submit]:disabled,
+.formContainer .buttons input[type=reset]:disabled {
+	color: rgba(var(--color), 0.3) !important;
+	background-color: rgba(var(--color), 0.1);
+	cursor: default;
+	user-select: none;
+}
+
+.inputError {
+	z-index: 1;
+	position: absolute;
+	display: block;
+	width: 100%;
+	font-family: 'Inconsolata', monospace !important;
+	font-size: 15px;
+	line-height: 15px;
+	overflow: hidden;
+	background-color: rgba(var(--bg-color-2), 1);
+	border-radius: var(--border-radius);
+	max-height: 0px;
+	box-shadow: 0px 2px 3px 0px rgba(0, 0 , 0, calc((var(--shadow-opacity)) - 0.2));
+	transform-origin: top center;
+	transition: ease-in 0.2s;
+}
+
+.inputError span {
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 5px;
+	background-color: rgba(var(--color-red), 0.5);
+}
+
+.inputError.show {
+	max-height: 100px;
+	transform: scaleY(1);
+	transition: ease-out 0.3s;
+}
+
+.inputError.hide {
+	max-height: 0px;
+	transform: scaleY(0);
+	transition: ease-in 0.2s;
+}
