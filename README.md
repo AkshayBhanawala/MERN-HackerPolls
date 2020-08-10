@@ -1,4 +1,4 @@
-# Hacker Polls [MERN]
+# [Hacker Polls [MERN]](https://th3az-mern-hackerpolls.herokuapp.com)
 An app that I build for an online challenge.
 Users can vote from the users available on the system, or they can register themself if they can talk admin into registering them. \
 Admin Login and User login are there. \
@@ -7,7 +7,7 @@ Admin can add user and delete user from the system. \
 Users can edit only self details, even Admin can only edit self details. \
 Not logged in users can also vote once, Uniqueness is checked by their IP address. \
 If logged in, both IP and User, are restricted to vote again. \
-Edit operation allows user to add/remove expertise details and rate/unrate themself on it. \
+Edit operation allows user to add/remove expertise details and rate/unrate themself on it.
 
 ---
 
@@ -22,7 +22,7 @@ Edit operation allows user to add/remove expertise details and rate/unrate thems
 ---
 
 ### Deployed URL
-https://th3az-mern-hackerpolls.herokuapp.com/
+https://th3az-mern-hackerpolls.herokuapp.com
 
 ---
 
