@@ -28,12 +28,13 @@ https://th3az-mern-hackerpolls.herokuapp.com
 
 ### Logins available by default
 **Admin:Admin@123** \
-**[Any User's Name Visible On Page]:User@123** \
+**[Any User's Name Visible On Page]:User@123**
 
 **Please DO NOT delete users that you did not created yourself, Someone else took time to add them. Respect time people. :)**
 
 ##### Or those details which you used for registration
 
+---
 
 ### Challenge from
 https://www.hackerearth.com/challenges/hiring/coda-global-fullstack-superhero-hiring-challenge-july20
