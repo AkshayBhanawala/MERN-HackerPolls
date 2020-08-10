@@ -1,0 +1,1713 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hacker-Polls</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+        hljs.configure({
+            tabReplace: '    ',
+        });
+        hljs.initHighlightingOnLoad();
+    </script>
+    <style>body {
+    position: relative;
+}
+
+h1 {
+    margin-top: 5px;
+}
+
+h1, h2, h3, h4 {
+    color: #2b2b2b;
+}
+
+h2:after {
+    content: ' ';
+}
+
+h5 {
+    font-weight: bold;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    display: none;
+    position: absolute;
+    margin-left: 8px;
+}
+
+h1:hover a, h2:hover a, h3:hover a, h4:hover a, h5:hover a, h6:hover a {
+    color: #a5a5a5;
+    display: initial;
+}
+
+.nav.nav-tabs > li > a {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.tab-content {
+    padding-top: 8px;
+}
+
+.table {
+    margin-bottom: 8px;
+}
+
+pre {
+    border-radius: 0px;
+    border: none;
+}
+
+pre code {
+    margin: -9.5px;
+}
+
+.request {
+    margin-top: 12px;
+    margin-bottom: 24px;
+}
+
+.response-text-sample {
+    padding: 0px !important;
+}
+
+.response-text-sample pre {
+    margin-bottom: 0px;
+}
+
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 250px;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #2b2b2b;
+    padding-top: 20px;
+}
+
+#sidebar-wrapper ul {
+    width: 250px;
+}
+
+#sidebar-wrapper ul li {
+    margin-right: 10px;
+}
+
+#sidebar-wrapper ul li a:hover {
+    background: inherit;
+    text-decoration: none;
+}
+
+#sidebar-wrapper ul li a {
+    display: block;
+    color: #ECF0F1;
+    padding: 6px 15px;
+}
+
+#sidebar-wrapper ul li ul {
+    padding-left: 25px;
+}
+
+#sidebar-wrapper ul li ul li a {
+    padding: 1px 0px;
+}
+
+#sidebar-wrapper ul li a:hover,
+#sidebar-wrapper ul li a:focus {
+    color: #e0c46c;
+    border-right: solid 1px #e0c46c;
+}
+
+#sidebar-wrapper ul li.active > a {
+    color: #e0c46c;
+    border-right: solid 3px #e0c46c;
+}
+
+#sidebar-wrapper ul li:not(.active) ul {
+    display: none;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px 15px 15px 250px;
+}
+</style>
+</head>
+<body data-spy="scroll" data-target=".scrollspy">
+<div id="sidebar-wrapper">
+    <div class="scrollspy">
+    <ul id="main-menu" data-spy="affix" class="nav">
+        <li>
+            <a href="#doc-general-notes">General notes</a>
+        </li>
+        
+        <li>
+            <a href="#doc-api-detail">API detail</a>
+        </li>
+        
+        <li>
+            <a href="#request-test">Test</a>
+        </li>
+        
+        <li>
+            <a href="#request-getallusers">GetAllUsers</a>
+        </li>
+        
+        <li>
+            <a href="#request-login">LogIn</a>
+        </li>
+        
+        <li>
+            <a href="#request-logout">LogOut</a>
+        </li>
+        
+        <li>
+            <a href="#request-isloggedin">IsLoggedIn</a>
+        </li>
+        
+        <li>
+            <a href="#request-voteuser">VoteUser</a>
+        </li>
+        
+        <li>
+            <a href="#request-adduser">AddUser</a>
+        </li>
+        
+        <li>
+            <a href="#request-deleteuser">DeleteUser</a>
+        </li>
+        
+        <li>
+            <a href="#request-edituser">EditUser</a>
+        </li>
+        
+        
+    </ul>
+</div>
+
+</div>
+<div id="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Hacker-Polls</h1>
+
+                <h2 id="doc-general-notes">
+                    General notes
+                    <a href="#doc-general-notes"><i class="glyphicon glyphicon-link"></i></a>
+                </h2>
+
+                <h1>Hacker-Polls API Documentation</h1>
+
+<hr />
+
+<p>This documentation list all the operations and it&rsquo;s description with required details.</p>
+
+<p>API user needs to login as an <strong>Admin</strong> or a <strong>User</strong> if they want to perform any operations other then <strong>Test</strong> or <strong>GetAllUsers</strong>.</p>
+
+<p>Below is an Example of Authorization token cookie that is set in your HTTP cookies afer successful login reqest-response.</p>
+
+
+                
+
+                <h2 id="doc-api-detail">
+                    API detail
+                    <a href="#doc-api-detail"><i class="glyphicon glyphicon-link"></i></a>
+                </h2>
+
+                
+                
+                <div class="request">
+
+                    <h3 id="request-test">
+                        Test
+                        <a href="#request-test"><i class="glyphicon glyphicon-link"></i></a>
+                    </h3>
+
+                    <div><p>Test if the server is running or not.</p>
+</div>
+
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#request-test-example-curl" data-toggle="tab">Curl</a></li>
+                            <li role="presentation"><a href="#request-test-example-http" data-toggle="tab">HTTP</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="request-test-example-curl">
+                                <pre><code class="hljs curl">curl -X GET "localhost:3001/API/Test"</code></pre>
+                            </div>
+                            <div class="tab-pane" id="request-test-example-http">
+                                <pre><code class="hljs http">GET 3001/API/Test HTTP/1.1
+Host: </code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            
+                            <li role="presentation" class="active">
+                                <a href="#request-test-responses-1656b4bf-8290-41b1-a3c0-316468190c80" data-toggle="tab">
+                                    
+                                    Response
+                                    
+                                </a>
+                            </li>
+                            
+                        </ul>
+                        <div class="tab-content">
+                            
+                            <div class="tab-pane active" id="request-test-responses-1656b4bf-8290-41b1-a3c0-316468190c80">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">X-Powered-By</th><td>Express</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Credentials</th><td>true</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json; charset=utf-8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>50</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">ETag</th><td>W/"32-6Ctsvro1ClrZK6AUKSlhB0ok3OA"</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Sat, 08 Aug 2020 09:44:36 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>keep-alive</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "status": 200,
+    "Server": "Running",
+    "DB": "connected"
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+
+                    <hr>
+                </div>
+                
+                
+                <div class="request">
+
+                    <h3 id="request-getallusers">
+                        GetAllUsers
+                        <a href="#request-getallusers"><i class="glyphicon glyphicon-link"></i></a>
+                    </h3>
+
+                    <div><p>To get all the users available
+Require no login or authorization</p>
+
+<h5>Response Details</h5>
+
+<h6>status</h6>
+
+<pre><code>Request's response status
+</code></pre>
+
+<h6>hackers</h6>
+
+<pre><code>List of hackers (users) in the system
+</code></pre>
+
+<h6>isVoteGiven</h6>
+
+<pre><code>Boolean denoting if you can vote or not
+</code></pre>
+</div>
+
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#request-getallusers-example-curl" data-toggle="tab">Curl</a></li>
+                            <li role="presentation"><a href="#request-getallusers-example-http" data-toggle="tab">HTTP</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="request-getallusers-example-curl">
+                                <pre><code class="hljs curl">curl -X GET "localhost:3001/API/GetAllHackers"</code></pre>
+                            </div>
+                            <div class="tab-pane" id="request-getallusers-example-http">
+                                <pre><code class="hljs http">GET 3001/API/GetAllHackers HTTP/1.1
+Host: </code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            
+                            <li role="presentation" class="active">
+                                <a href="#request-getallusers-responses-e10d2601-cd53-4b76-8eaf-ccbab02304d0" data-toggle="tab">
+                                    
+                                    Response
+                                    
+                                </a>
+                            </li>
+                            
+                        </ul>
+                        <div class="tab-content">
+                            
+                            <div class="tab-pane active" id="request-getallusers-responses-e10d2601-cd53-4b76-8eaf-ccbab02304d0">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">X-Powered-By</th><td>Express</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Credentials</th><td>true</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json; charset=utf-8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>1459</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">ETag</th><td>W/"5b3-S3hrlxupYmExFVv3L6CZn9ZxdYI"</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Sat, 08 Aug 2020 09:18:47 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>keep-alive</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "status": 200,
+    "hackers": [
+        {
+            "isAdmin": true,
+            "numSolvedChallenges": 1337,
+            "votes": 10,
+            "name": "Admin",
+            "expertise": [
+                {
+                    "rating": 5,
+                    "name": "Python"
+                },
+                {
+                    "rating": 4,
+                    "name": "JavaScript"
+                },
+                {
+                    "rating": 3,
+                    "name": "PHP"
+                },
+                {
+                    "rating": 2,
+                    "name": "Java"
+                },
+                {
+                    "rating": 1,
+                    "name": "C#"
+                }
+            ]
+        },
+        {
+            "isAdmin": false,
+            "numSolvedChallenges": 2,
+            "votes": 1,
+            "name": "Portia Hibbert",
+            "expertise": [
+                {
+                    "rating": 1,
+                    "name": "Python"
+                }
+            ]
+        },
+        {
+            "isAdmin": false,
+            "numSolvedChallenges": 0,
+            "votes": 0,
+            "name": "Kien Cherry",
+            "expertise": []
+        }
+    ],
+    "isVoteGiven": false
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+
+                    <hr>
+                </div>
+                
+                
+                <div class="request">
+
+                    <h3 id="request-login">
+                        LogIn
+                        <a href="#request-login"><i class="glyphicon glyphicon-link"></i></a>
+                    </h3>
+
+                    <div><p>Login user.
+This will given you an authorization JWT Token that you will require to perform user specific tasks.
+Token will be HTTP only cookie, as a Authorization header.
+Without this token you can&rsquo;t access the service.
+After a successful login, authorization token is valid for 1 hour.
+If already logged in, and if token is not expired, your current authorization token will be decoded and given as a response only. Database values will not be fetched from re-login operation.</p>
+</div>
+
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#request-login-example-curl" data-toggle="tab">Curl</a></li>
+                            <li role="presentation"><a href="#request-login-example-http" data-toggle="tab">HTTP</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="request-login-example-curl">
+                                <pre><code class="hljs curl">curl -X POST -d '{
+    "name": "UserName",
+    "password": "UserPassword"
+}' "localhost:3001/API/LogIn"</code></pre>
+                            </div>
+                            <div class="tab-pane" id="request-login-example-http">
+                                <pre><code class="hljs http">POST 3001/API/LogIn HTTP/1.1
+Host: 
+
+{
+    "name": "UserName",
+    "password": "UserPassword"
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            
+                            <li role="presentation" class="active">
+                                <a href="#request-login-responses-039c5b29-9226-403b-9f57-a34cd5dde3a6" data-toggle="tab">
+                                    
+                                    LogIn [User invalid]
+                                    
+                                </a>
+                            </li>
+                            
+                            <li role="presentation">
+                                <a href="#request-login-responses-c1221ece-5955-4c69-9e8e-bb2b372c190e" data-toggle="tab">
+                                    
+                                    LogIn [Password invalid]
+                                    
+                                </a>
+                            </li>
+                            
+                            <li role="presentation">
+                                <a href="#request-login-responses-b47cc7bb-a0e3-4001-9ebc-34166b88709c" data-toggle="tab">
+                                    
+                                    LogIn [Success]
+                                    
+                                </a>
+                            </li>
+                            
+                        </ul>
+                        <div class="tab-content">
+                            
+                            <div class="tab-pane active" id="request-login-responses-039c5b29-9226-403b-9f57-a34cd5dde3a6">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>401 Unauthorized</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">X-Powered-By</th><td>Express</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Credentials</th><td>true</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json; charset=utf-8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>61</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">ETag</th><td>W/"3d-HaO6t2R4o0EhncEpacmSQqio4Cg"</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Sat, 08 Aug 2020 10:10:22 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>keep-alive</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "status": 401.1,
+    "username": {
+        "message": "User does not exist"
+    }
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                            <div class="tab-pane" id="request-login-responses-c1221ece-5955-4c69-9e8e-bb2b372c190e">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>401 Unauthorized</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">X-Powered-By</th><td>Express</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Credentials</th><td>true</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json; charset=utf-8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>58</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">ETag</th><td>W/"3a-u7mp95SaG6F09m6VS+1TmbpVnxU"</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Sat, 08 Aug 2020 09:55:39 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>keep-alive</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "status": 401.2,
+    "password": {
+        "message": "Password invalid"
+    }
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                            <div class="tab-pane" id="request-login-responses-b47cc7bb-a0e3-4001-9ebc-34166b88709c">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">X-Powered-By</th><td>Express</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Credentials</th><td>true</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Set-Cookie</th><td>authorization=Bearer%20eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc0FkbWluIjp0cnVlLCJudW1Tb2x2ZWRDaGFsbGVuZ2VzIjoxMzM3LCJoYXNWb3RlZCI6dHJ1ZSwidm90ZXMiOjE5LCJuYW1lIjoiQWRtaW4iLCJleHBlcnRpc2UiOlt7InJhdGluZyI6NSwibmFtZSI6IkphdmFTY3JpcHQifSx7InJhdGluZyI6NCwibmFtZSI6IkphdmEifSx7InJhdGluZyI6MywibmFtZSI6IlB5dGhvbiJ9LHsicmF0aW5nIjoyLCJuYW1lIjoiQ1NTMyJ9LHsicmF0aW5nIjoxLCJuYW1lIjoiSGFza2VsbCJ9XSwiaWF0IjoxNTk2ODgwMjk2LCJleHAiOjE1OTY4ODM4OTZ9.XwZdwgrz6JbbI8h9xXtqoPspu5SwlWg9OyBVbciSB8o; Max-Age=3600; Path=/; Expires=Sat, 08 Aug 2020 10:51:36 GMT; HttpOnly; SameSite=Lax</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json; charset=utf-8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>301</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">ETag</th><td>W/"12d-WRbmqUm5Rxje6p3MAZIOGQI/1SA"</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Sat, 08 Aug 2020 09:51:36 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>keep-alive</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "status": 200,
+    "user": {
+        "isAdmin": true,
+        "numSolvedChallenges": 1337,
+        "hasVoted": true,
+        "votes": 10,
+        "name": "UserName",
+        "expertise": [
+            {
+                "rating": 5,
+                "name": "JavaScript"
+            },
+            {
+                "rating": 4,
+                "name": "Java"
+            },
+            {
+                "rating": 3,
+                "name": "Python"
+            },
+            {
+                "rating": 2,
+                "name": "CSS3"
+            },
+            {
+                "rating": 1,
+                "name": "Haskell"
+            }
+        ],
+        "iat": 1596880296,
+        "exp": 1596883896
+    }
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+
+                    <hr>
+                </div>
+                
+                
+                <div class="request">
+
+                    <h3 id="request-logout">
+                        LogOut
+                        <a href="#request-logout"><i class="glyphicon glyphicon-link"></i></a>
+                    </h3>
+
+                    <div><p>Log out a user and clear the authorization token from HTTP cookies.
+Logged in or not, Logout will always respond with same response unless something very wrong has happened on the server.</p>
+</div>
+
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#request-logout-example-curl" data-toggle="tab">Curl</a></li>
+                            <li role="presentation"><a href="#request-logout-example-http" data-toggle="tab">HTTP</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="request-logout-example-curl">
+                                <pre><code class="hljs curl">curl -X POST "localhost:3001/API/LogOut"</code></pre>
+                            </div>
+                            <div class="tab-pane" id="request-logout-example-http">
+                                <pre><code class="hljs http">POST 3001/API/LogOut HTTP/1.1
+Host: </code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            
+                            <li role="presentation" class="active">
+                                <a href="#request-logout-responses-4314250a-b255-4827-9f77-5031dbe92d4d" data-toggle="tab">
+                                    
+                                    Response
+                                    
+                                </a>
+                            </li>
+                            
+                        </ul>
+                        <div class="tab-content">
+                            
+                            <div class="tab-pane active" id="request-logout-responses-4314250a-b255-4827-9f77-5031dbe92d4d">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">X-Powered-By</th><td>Express</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Credentials</th><td>true</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Set-Cookie</th><td>authorization=; Max-Age=0; Path=/; Expires=Sat, 08 Aug 2020 09:52:51 GMT; HttpOnly; SameSite=Lax</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json; charset=utf-8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>258</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">ETag</th><td>W/"102-dJD52mZXvZSUG38awsygHbkxNXE"</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Sat, 08 Aug 2020 09:52:51 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>keep-alive</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "status": 200,
+    "isLoggedIn": false,
+    "headers": {
+        "x-powered-by": "Express",
+        "access-control-allow-origin": "*",
+        "access-control-allow-credentials": "true",
+        "set-cookie": "authorization=; Max-Age=0; Path=/; Expires=Sat, 08 Aug 2020 09:52:51 GMT; HttpOnly; SameSite=Lax"
+    }
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+
+                    <hr>
+                </div>
+                
+                
+                <div class="request">
+
+                    <h3 id="request-isloggedin">
+                        IsLoggedIn
+                        <a href="#request-isloggedin"><i class="glyphicon glyphicon-link"></i></a>
+                    </h3>
+
+                    <div><p>Check if the user is logged in or not.
+If loged in, it&rsquo;ll return current user&rsquo;s object by decoding authorization token, and not database value.</p>
+</div>
+
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#request-isloggedin-example-curl" data-toggle="tab">Curl</a></li>
+                            <li role="presentation"><a href="#request-isloggedin-example-http" data-toggle="tab">HTTP</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="request-isloggedin-example-curl">
+                                <pre><code class="hljs curl">curl -X POST "localhost:3001/API/IsLoggedIn"</code></pre>
+                            </div>
+                            <div class="tab-pane" id="request-isloggedin-example-http">
+                                <pre><code class="hljs http">POST 3001/API/IsLoggedIn HTTP/1.1
+Host: </code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            
+                            <li role="presentation" class="active">
+                                <a href="#request-isloggedin-responses-e06b3187-4787-4a90-81b0-18cbcbe5c855" data-toggle="tab">
+                                    
+                                    IsLoggedIn [Logged in]
+                                    
+                                </a>
+                            </li>
+                            
+                            <li role="presentation">
+                                <a href="#request-isloggedin-responses-8434c894-46bd-4d51-8311-15811e7c58d6" data-toggle="tab">
+                                    
+                                    IsLoggedIn [Not logged in]
+                                    
+                                </a>
+                            </li>
+                            
+                        </ul>
+                        <div class="tab-content">
+                            
+                            <div class="tab-pane active" id="request-isloggedin-responses-e06b3187-4787-4a90-81b0-18cbcbe5c855">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">X-Powered-By</th><td>Express</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Credentials</th><td>true</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json; charset=utf-8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>319</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">ETag</th><td>W/"13f-LZ2VTB8bMUl+TkCdJH61is9zWlw"</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Sat, 08 Aug 2020 09:53:25 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>keep-alive</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "status": 200,
+    "isLoggedIn": true,
+    "user": {
+        "isAdmin": true,
+        "numSolvedChallenges": 1337,
+        "hasVoted": true,
+        "votes": 10,
+        "name": "UserName",
+        "expertise": [
+            {
+                "rating": 5,
+                "name": "JavaScript"
+            },
+            {
+                "rating": 4,
+                "name": "Java"
+            },
+            {
+                "rating": 3,
+                "name": "Python"
+            },
+            {
+                "rating": 2,
+                "name": "CSS3"
+            },
+            {
+                "rating": 1,
+                "name": "Haskell"
+            }
+        ],
+        "iat": 1596880400,
+        "exp": 1596884000
+    }
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                            <div class="tab-pane" id="request-isloggedin-responses-8434c894-46bd-4d51-8311-15811e7c58d6">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">X-Powered-By</th><td>Express</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Credentials</th><td>true</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json; charset=utf-8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>33</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">ETag</th><td>W/"21-0KYu8S2wmtFPZAJ4PFOEXHcCI/o"</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Sat, 08 Aug 2020 10:33:25 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>keep-alive</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "status": 200,
+    "isLoggedIn": false
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+
+                    <hr>
+                </div>
+                
+                
+                <div class="request">
+
+                    <h3 id="request-voteuser">
+                        VoteUser
+                        <a href="#request-voteuser"><i class="glyphicon glyphicon-link"></i></a>
+                    </h3>
+
+                    <div><p>Vote a user.
+This is an IP and/or User restricted service.
+If a user has already voted, they can&rsquo;t vote again.
+If someone has voted from an IP, same IP can&rsquo;t be used to vote again.
+In response it&rsquo;ll return all the users with updated details from the server and <strong>isVoteGiven</strong> as <strong>true</strong> for current logged in user or IP.</p>
+
+<p>In request you send user object with name as the name of the user the vote in being given to.</p>
+
+<p>One can vote self or other <strong>maximum once</strong>*.</p>
+</div>
+
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#request-voteuser-example-curl" data-toggle="tab">Curl</a></li>
+                            <li role="presentation"><a href="#request-voteuser-example-http" data-toggle="tab">HTTP</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="request-voteuser-example-curl">
+                                <pre><code class="hljs curl">curl -X PATCH -d '{
+    "user" : {
+        "name": "Admin"
+    }
+}' "localhost:3001/API/VoteUser"</code></pre>
+                            </div>
+                            <div class="tab-pane" id="request-voteuser-example-http">
+                                <pre><code class="hljs http">PATCH 3001/API/VoteUser HTTP/1.1
+Host: 
+
+{
+    "user" : {
+        "name": "Admin"
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            
+                            <li role="presentation" class="active">
+                                <a href="#request-voteuser-responses-8bd9ea85-a6f2-4eed-a097-a58e38b378ed" data-toggle="tab">
+                                    
+                                    VoteUser [Vote Success]
+                                    
+                                </a>
+                            </li>
+                            
+                            <li role="presentation">
+                                <a href="#request-voteuser-responses-cd55951e-6627-4ef5-9791-503a4a673dd8" data-toggle="tab">
+                                    
+                                    VoteUser [Vote Error]
+                                    
+                                </a>
+                            </li>
+                            
+                        </ul>
+                        <div class="tab-content">
+                            
+                            <div class="tab-pane active" id="request-voteuser-responses-8bd9ea85-a6f2-4eed-a097-a58e38b378ed">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">X-Powered-By</th><td>Express</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Credentials</th><td>true</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json; charset=utf-8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>1439</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">ETag</th><td>W/"59f-yr6h+VP6xEI+I0gKA+mHdbBCWlY"</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Sat, 08 Aug 2020 10:16:44 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>keep-alive</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "status": 200,
+    "hackers": [
+        {
+            "isAdmin": true,
+            "numSolvedChallenges": 1337,
+            "votes": 11,
+            "name": "Admin",
+            "expertise": [
+                {
+                    "rating": 5,
+                    "name": "Python"
+                },
+                {
+                    "rating": 4,
+                    "name": "JavaScript"
+                },
+                {
+                    "rating": 3,
+                    "name": "PHP"
+                },
+                {
+                    "rating": 2,
+                    "name": "Java"
+                },
+                {
+                    "rating": 1,
+                    "name": "C#"
+                }
+            ]
+        },
+        {
+            "isAdmin": false,
+            "numSolvedChallenges": 2,
+            "votes": 1,
+            "name": "Portia Hibbert",
+            "expertise": [
+                {
+                    "rating": 1,
+                    "name": "Python"
+                }
+            ]
+        },
+        {
+            "isAdmin": false,
+            "numSolvedChallenges": 0,
+            "votes": 0,
+            "name": "Kien Cherry",
+            "expertise": []
+        }
+    ],
+    "isVoteGiven": true
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                            <div class="tab-pane" id="request-voteuser-responses-cd55951e-6627-4ef5-9791-503a4a673dd8">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>409 Conflict</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">X-Powered-By</th><td>Express</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Credentials</th><td>true</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json; charset=utf-8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>43</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">ETag</th><td>W/"2b-QIMbWPg7juSFYPawE6PQdv9Mkmk"</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Sat, 08 Aug 2020 10:48:17 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>keep-alive</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "status": 409,
+    "error": "Vote Already Given"
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+
+                    <hr>
+                </div>
+                
+                
+                <div class="request">
+
+                    <h3 id="request-adduser">
+                        AddUser
+                        <a href="#request-adduser"><i class="glyphicon glyphicon-link"></i></a>
+                    </h3>
+
+                    <div><p>Add new user.
+Admin only restricted service.
+<strong>Authorization token of an admin user is required.</strong>
+Allows admin to add new user in the system.
+Request requires, user object that include minimum <strong>name</strong> and <strong>password</strong> variables.
+Other details are optional such as (numSolvedChallenges, expertise).
+Error response is given from unauthorised user.
+See examples for details.</p>
+</div>
+
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#request-adduser-example-curl" data-toggle="tab">Curl</a></li>
+                            <li role="presentation"><a href="#request-adduser-example-http" data-toggle="tab">HTTP</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="request-adduser-example-curl">
+                                <pre><code class="hljs curl">curl -X PUT -d '{
+    "user" : {
+        "name": "Jane Doe",
+        "password": "Jane'sPassword",
+		"numSolvedChallenges": 1,
+        "expertise": [
+            {
+                "name": "JavaScript",
+                "rating": 5
+            }
+        ]
+    }
+}' "localhost:3001/API/Admin/AddUser"</code></pre>
+                            </div>
+                            <div class="tab-pane" id="request-adduser-example-http">
+                                <pre><code class="hljs http">PUT 3001/API/Admin/AddUser HTTP/1.1
+Host: 
+
+{
+    "user" : {
+        "name": "Jane Doe",
+        "password": "Jane'sPassword",
+		"numSolvedChallenges": 1,
+        "expertise": [
+            {
+                "name": "JavaScript",
+                "rating": 5
+            }
+        ]
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            
+                            <li role="presentation" class="active">
+                                <a href="#request-adduser-responses-ff562ebc-8ac9-4085-bc4c-e7832ec1f043" data-toggle="tab">
+                                    
+                                    AddUser [Username Exist]
+                                    
+                                </a>
+                            </li>
+                            
+                            <li role="presentation">
+                                <a href="#request-adduser-responses-afad3ba5-a948-401f-987a-738015b9f569" data-toggle="tab">
+                                    
+                                    AddUser [Not Logged in]
+                                    
+                                </a>
+                            </li>
+                            
+                            <li role="presentation">
+                                <a href="#request-adduser-responses-fc28f090-446f-434a-a70c-a941b7ddd658" data-toggle="tab">
+                                    
+                                    AddUser [Success]
+                                    
+                                </a>
+                            </li>
+                            
+                            <li role="presentation">
+                                <a href="#request-adduser-responses-85958b64-a05b-497f-b844-3f4e729e782d" data-toggle="tab">
+                                    
+                                    AddUser [Not Admin]
+                                    
+                                </a>
+                            </li>
+                            
+                        </ul>
+                        <div class="tab-content">
+                            
+                            <div class="tab-pane active" id="request-adduser-responses-ff562ebc-8ac9-4085-bc4c-e7832ec1f043">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>409 Conflict</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">X-Powered-By</th><td>Express</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Credentials</th><td>true</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json; charset=utf-8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>33</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">ETag</th><td>W/"21-cH4R5w/KfEc+RIgeOeimnzWjLHU"</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Sat, 08 Aug 2020 11:28:43 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>keep-alive</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "status": 409,
+    "error": {
+        "name": 1
+    }
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                            <div class="tab-pane" id="request-adduser-responses-afad3ba5-a948-401f-987a-738015b9f569">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>401 Unauthorized</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">X-Powered-By</th><td>Express</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Credentials</th><td>true</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json; charset=utf-8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>40</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">ETag</th><td>W/"28-5mY78nhPN9V+MP0SBekuDiSY4s8"</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Sat, 08 Aug 2020 11:34:30 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>keep-alive</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "status": 401.1,
+    "error": "Not Logged In"
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                            <div class="tab-pane" id="request-adduser-responses-fc28f090-446f-434a-a70c-a941b7ddd658">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>201 Created</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">X-Powered-By</th><td>Express</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Credentials</th><td>true</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json; charset=utf-8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>29</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">ETag</th><td>W/"1d-oQHeyOOPIetq6HraoXKasvAigfE"</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Sat, 08 Aug 2020 11:18:36 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>keep-alive</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "status": 201,
+    "success": true
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                            <div class="tab-pane" id="request-adduser-responses-85958b64-a05b-497f-b844-3f4e729e782d">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>401 Unauthorized</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">X-Powered-By</th><td>Express</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Credentials</th><td>true</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json; charset=utf-8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>41</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">ETag</th><td>W/"29-3qyFkMs5SBk+oADnMtlonhgNxes"</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Sat, 08 Aug 2020 11:35:11 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>keep-alive</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "status": 401.2,
+    "error": "Not Admin User"
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+
+                    <hr>
+                </div>
+                
+                
+                <div class="request">
+
+                    <h3 id="request-deleteuser">
+                        DeleteUser
+                        <a href="#request-deleteuser"><i class="glyphicon glyphicon-link"></i></a>
+                    </h3>
+
+                    <div><p>Delete new user.
+Admin only restricted service.
+<strong>Authorization token of an admin user is required.</strong>
+Allows admin to delete user from the system.
+Request requires, user object that include minimum <strong>name</strong> variable.
+Other details are ignored from request.
+The name specified in the user object will be deleted from the database if it exists.
+User exist or not, it will return a valid response.
+Error response is given from unauthorised user.
+See examples for details.</p>
+</div>
+
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#request-deleteuser-example-curl" data-toggle="tab">Curl</a></li>
+                            <li role="presentation"><a href="#request-deleteuser-example-http" data-toggle="tab">HTTP</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="request-deleteuser-example-curl">
+                                <pre><code class="hljs curl">curl -X DELETE -d '{
+    "user": {
+        "name": "Jane Doe"
+    }
+}' "localhost:3001/API/Admin/DeleteUser"</code></pre>
+                            </div>
+                            <div class="tab-pane" id="request-deleteuser-example-http">
+                                <pre><code class="hljs http">DELETE 3001/API/Admin/DeleteUser HTTP/1.1
+Host: 
+
+{
+    "user": {
+        "name": "Jane Doe"
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            
+                            <li role="presentation" class="active">
+                                <a href="#request-deleteuser-responses-36d4c333-630a-400f-bce3-db1a696d6566" data-toggle="tab">
+                                    
+                                    DeleteUser [Not Logged in]
+                                    
+                                </a>
+                            </li>
+                            
+                            <li role="presentation">
+                                <a href="#request-deleteuser-responses-9256d55b-8c4b-4f39-b0aa-81d97d7c6876" data-toggle="tab">
+                                    
+                                    DeleteUser [Success]
+                                    
+                                </a>
+                            </li>
+                            
+                            <li role="presentation">
+                                <a href="#request-deleteuser-responses-87cbef94-06d2-402a-b587-91519770be10" data-toggle="tab">
+                                    
+                                    DeleteUser [Not Admin]
+                                    
+                                </a>
+                            </li>
+                            
+                        </ul>
+                        <div class="tab-content">
+                            
+                            <div class="tab-pane active" id="request-deleteuser-responses-36d4c333-630a-400f-bce3-db1a696d6566">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>401 Unauthorized</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">X-Powered-By</th><td>Express</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Credentials</th><td>true</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json; charset=utf-8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>40</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">ETag</th><td>W/"28-5mY78nhPN9V+MP0SBekuDiSY4s8"</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Sat, 08 Aug 2020 11:34:12 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>keep-alive</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "status": 401.1,
+    "error": "Not Logged In"
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                            <div class="tab-pane" id="request-deleteuser-responses-9256d55b-8c4b-4f39-b0aa-81d97d7c6876">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">X-Powered-By</th><td>Express</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Credentials</th><td>true</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json; charset=utf-8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>29</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">ETag</th><td>W/"1d-D4vTHaQRL+d8MF8HXXoPi2Pu8TM"</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Sat, 08 Aug 2020 11:32:52 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>keep-alive</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "status": 200,
+    "success": true
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                            <div class="tab-pane" id="request-deleteuser-responses-87cbef94-06d2-402a-b587-91519770be10">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>401 Unauthorized</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">X-Powered-By</th><td>Express</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Credentials</th><td>true</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json; charset=utf-8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>41</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">ETag</th><td>W/"29-3qyFkMs5SBk+oADnMtlonhgNxes"</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Sat, 08 Aug 2020 11:35:35 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>keep-alive</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "status": 401.2,
+    "error": "Not Admin User"
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+
+                    <hr>
+                </div>
+                
+                
+                <div class="request">
+
+                    <h3 id="request-edituser">
+                        EditUser
+                        <a href="#request-edituser"><i class="glyphicon glyphicon-link"></i></a>
+                    </h3>
+
+                    <div><p>Edit a user.
+This is an user restricted service.
+<strong>Authorization token is required.</strong>
+Error response is given from unauthorised user.
+Only logged in user can edit their details.
+Admin also can&rsquo;t edit other&rsquo;s details.
+And login is required to access this service.
+In request it accepts updates for <strong>password</strong> and/or <strong>numSolvedChallenges</strong> and/or <strong>expertise</strong>.
+Partial update of expertise is not supported, <strong>experise</strong> object will be as it is updated in database.
+If you want to add new expertise with existing expertise, include existing expertise with your new expertise along with it.</p>
+</div>
+
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#request-edituser-example-curl" data-toggle="tab">Curl</a></li>
+                            <li role="presentation"><a href="#request-edituser-example-http" data-toggle="tab">HTTP</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="request-edituser-example-curl">
+                                <pre><code class="hljs curl">curl -X PUT -d '{
+    "user" : {
+        "password": "Jane'sNewPassword",
+        "numSolvedChallenges": 2,
+        "expertise": [
+            {
+                "name": "JavaScript",
+                "rating": 4
+            },
+            {
+                "name": "Python",
+                "rating": 3
+            }
+        ]
+    }
+}' "localhost:3001/API/EditUser"</code></pre>
+                            </div>
+                            <div class="tab-pane" id="request-edituser-example-http">
+                                <pre><code class="hljs http">PUT 3001/API/EditUser HTTP/1.1
+Host: 
+
+{
+    "user" : {
+        "password": "Jane'sNewPassword",
+        "numSolvedChallenges": 2,
+        "expertise": [
+            {
+                "name": "JavaScript",
+                "rating": 4
+            },
+            {
+                "name": "Python",
+                "rating": 3
+            }
+        ]
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            
+                            <li role="presentation" class="active">
+                                <a href="#request-edituser-responses-3eb74159-7ba2-49be-b24c-58701ff5365c" data-toggle="tab">
+                                    
+                                    EditUser [Not Logged in]
+                                    
+                                </a>
+                            </li>
+                            
+                            <li role="presentation">
+                                <a href="#request-edituser-responses-2683fb46-50af-4941-9411-859539162535" data-toggle="tab">
+                                    
+                                    EditUser [Success]
+                                    
+                                </a>
+                            </li>
+                            
+                        </ul>
+                        <div class="tab-content">
+                            
+                            <div class="tab-pane active" id="request-edituser-responses-3eb74159-7ba2-49be-b24c-58701ff5365c">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>401 Unauthorized</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">X-Powered-By</th><td>Express</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Credentials</th><td>true</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json; charset=utf-8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>38</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">ETag</th><td>W/"26-PEBa+KHYhhEro5K3v9VO1uMaxww"</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Sat, 08 Aug 2020 11:33:38 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>keep-alive</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "status": 401,
+    "error": "Not Logged In"
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                            <div class="tab-pane" id="request-edituser-responses-2683fb46-50af-4941-9411-859539162535">
+                                <table class="table table-bordered">
+                                    <tr><th style="width: 20%;">Status</th><td>200 OK</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">X-Powered-By</th><td>Express</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Origin</th><td>*</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Access-Control-Allow-Credentials</th><td>true</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Type</th><td>application/json; charset=utf-8</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Content-Length</th><td>29</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">ETag</th><td>W/"1d-D4vTHaQRL+d8MF8HXXoPi2Pu8TM"</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Date</th><td>Sat, 08 Aug 2020 11:29:31 GMT</td></tr>
+                                    
+                                    <tr><th style="width: 20%;">Connection</th><td>keep-alive</td></tr>
+                                    
+                                    
+                                    
+                                    <tr><td class="response-text-sample" colspan="2">
+                                        <pre><code>{
+    "status": 200,
+    "success": true
+}</code></pre>
+                                    </td></tr>
+                                    
+                                    
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+
+                    <hr>
+                </div>
+                
+
+
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("table:not(.table)").addClass('table table-bordered');
+    });
+</script>
+</body>
+</html>
