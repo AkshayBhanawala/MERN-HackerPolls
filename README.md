@@ -32,9 +32,9 @@ https://th3az-mern-hackerpolls.herokuapp.com
 |Admin: |**Admin**|**Admin@123** |
 |User: |**[Any User's Name Visible On Page]**|**User@123**|
 
-**Please DO NOT delete users that you did not created yourself, Someone else took time to add them. Respect time people. :)**
+#### Or those details which was used for registration
 
-##### Or those details which you used for registration
+**Please DO NOT delete users that you did not created yourself, Someone else took time to add them. Respect time people. :)**
 
 ---
 
