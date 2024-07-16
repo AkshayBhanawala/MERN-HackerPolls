@@ -1,4 +1,4 @@
-# [Hacker Polls [MERN]](https://akshaybhanawala.github.io/[Projects]/MERN-HackerPolls)
+# [Hacker Polls [MERN]](https://akshaybhanawala.onrender.com/[Projects]/MERN-HackerPolls/#/)
 An app that I build for an online challenge.
 Users can vote from the users available on the system, or they can register themself if they can talk admin into registering them. \
 Admin Login and User login are there. \
@@ -22,7 +22,7 @@ Edit operation allows user to add/remove expertise details and rate/unrate thems
 ---
 
 ### Deployed URL
-https://akshaybhanawala.github.io/[Projects]/MERN-HackerPolls
+https://akshaybhanawala.onrender.com/[Projects]/MERN-HackerPolls/#/
 
 ---
 
